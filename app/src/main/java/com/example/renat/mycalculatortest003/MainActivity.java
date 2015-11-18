@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button15;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,11 +65,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button15.setOnClickListener(this);
 
 
-
     }
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button1:
+                textView.setText("1");
+                break;
+            case R.id.button2:
+                textView.setText("2");
+                break;
+            case R.id.button3:
+                textView.setText("3");
+                break;
+            case R.id.button4:
+                textView.setText("4");
+                break;
+            case R.id.button5:
+                textView.setText("5");
+                break;
+            case R.id.button6:
+                textView.setText("6");
+                break;
+            case R.id.button7:
+                textView.setText("7");
+                break;
+            case R.id.button8:
+                textView.setText("8");
+                break;
+            case R.id.button9:
+                textView.setText("9");
+                break;
+            case R.id.button10:
+                textView.setText("+");
+                break;
+            case R.id.button11:
+                textView.setText("0");
+                break;
+            case R.id.button12:
+                textView.setText("-");
+                break;
+            case R.id.button13:
+                textView.setText("*");
+                break;
+            case R.id.button14:
+                textView.setText("=");
+                break;
+            case R.id.button15:
+                textView.setText("/");
+                break;
+
+        }
 
 
     }
