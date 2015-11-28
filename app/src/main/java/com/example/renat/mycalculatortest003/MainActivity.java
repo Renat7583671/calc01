@@ -4,13 +4,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final int NO_OPERATION = 0;
+    public static final int PLUS = 1;
+    public static final int MINUS = 2;
+    public static final int MULTIPLY = 3;
+    public static final int DEVISION = 4;
+    public static final int RESULT = 5;
+    public static final int RESET = 6;
     TextView textView;
-    EditText editText;
-    EditText editText2;
     Button button1;
     Button button2;
     Button button3;
@@ -20,31 +24,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button button7;
     Button button8;
     Button button9;
-    Button button10;
+    Button plus;
     Button button11;
-    Button button12;
-    Button button13;
-    Button button14;
-    Button button15;
-    String mCount = "";
+    Button minus;
+    Button multiply;
+    Button division;
+    Button result;
+    Button reset;
+
     double a,b,c;
+
+    int operation;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calc);
-        int a=0;
-        int b=0;
-        int c=0;
-        editText =(EditText)findViewById(R.id.editText);
-        editText2 =(EditText)findViewById(R.id.editText2);
-        textView =(TextView)findViewById(R.id.textView);
-
-
-
-
-
         textView = (TextView) findViewById(R.id.textView);
         button1 = (Button) findViewById(R.id.button1);
         button2 = (Button) findViewById(R.id.button2);
@@ -55,12 +51,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button7 = (Button) findViewById(R.id.button7);
         button8 = (Button) findViewById(R.id.button8);
         button9 = (Button) findViewById(R.id.button9);
-        button10 = (Button) findViewById(R.id.button10);
+        plus = (Button) findViewById(R.id.plus);
         button11 = (Button) findViewById(R.id.button11);
-        button12 = (Button) findViewById(R.id.button12);
-        button13 = (Button) findViewById(R.id.button13);
-        button14 = (Button) findViewById(R.id.button14);
-        button15 = (Button) findViewById(R.id.button15);
+        minus = (Button) findViewById(R.id.minus);
+        multiply = (Button) findViewById(R.id.multiply);
+        result = (Button) findViewById(R.id.result);
+        division = (Button) findViewById(R.id.division);
+        reset = (Button) findViewById(R.id.reset);
 
 
         button1.setOnClickListener(this);
@@ -73,41 +70,154 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button7.setOnClickListener(this);
         button8.setOnClickListener(this);
         button9.setOnClickListener(this);
-        button10.setOnClickListener(this);
+        plus.setOnClickListener(this);
         button11.setOnClickListener(this);
-        button12.setOnClickListener(this);
-        button13.setOnClickListener(this);
-        button14.setOnClickListener(this);
-        button15.setOnClickListener(this);
+        minus.setOnClickListener(this);
+        multiply.setOnClickListener(this);
+        result.setOnClickListener(this);
+        division.setOnClickListener(this);
+        reset.setOnClickListener(this);
+
+        clear();
 
 
     }
 
     @Override
     public void onClick(View v) {
-        a =Float.parseFloat(editText.getText().toString());
-        b =Float.parseFloat(editText2 .getText().toString());
         switch (v.getId()) {
-            case R.id.button10:
-                mCount = "+";
-                c = a + b;
+            case R.id.button1:
+                // This is One
+                pressDigit(1);
                 break;
-            case R.id.button12:
-                mCount = "-";
-                c = a - b;
+            case R.id.button2:
+                // This is One
+                pressDigit(2);
                 break;
-            case R.id.button13:
-                mCount = "*";
-                c = a * b;
+            case R.id.button3:
+                // This is One
+                pressDigit(3);
                 break;
-            case R.id.button15:
-                mCount = "/";
-                c = a / b;
+
+            case R.id.button4:
+                // This is One
+                pressDigit(4);
                 break;
+            case R.id.button5:
+                // This is One
+                pressDigit(5);
+                break;
+            case R.id.button6:
+                // This is One
+                pressDigit(6);
+                break;
+            case R.id.button7:
+                // This is One
+                pressDigit(7);
+                break;
+            case R.id.button8:
+                // This is One
+                pressDigit(8);
+                break;
+            case R.id.button9:
+                // This is One
+                pressDigit(9);
+                break;
+            case R.id.button11:
+                // This is One
+                pressDigit(0);
+                break;
+            case R.id.plus:
+                pressOperation(PLUS);
+                break;
+            case R.id.minus:
+                pressOperation(MINUS);
+                break;
+            case R.id.division:
+                pressOperation(DEVISION);
+                break;
+            case R.id.multiply:
+                pressOperation(MULTIPLY);
+                break;
+            case R.id.result:
+                pressOperation(RESULT);
+                break;
+            case R.id.reset:
+                pressOperation(RESET);
+                break;
+
+
             default:
                 break;
         }
-        textView.setText(a + " " + mCount + " " + b + " = " + c);
+    }
+
+    private void pressDigit(int digit) {
+
+        if (operation == NO_OPERATION) {
+            a = a*10 + digit;
+            textView.setText("" + a);
+        } else {
+            b = b*10 + digit;
+            textView.setText("" + b);
+        }
+
+
+    }
+    private void pressOperation(int op) {
+        switch (op) {
+            case PLUS:
+            case MINUS:
+            case MULTIPLY:
+            case DEVISION:
+                operation = op;
+                break;
+
+
+
+            case RESULT:
+                calcResult();
+                textView.setText("" + c);
+                break;
+
+            case RESET:
+                clear();
+                a = 0;
+                b = 0;
+                c = 0;
+                textView.setText("0");
+                break;
+
+        }
+    }
+
+    private void calcResult() {
+        switch (operation) {
+            case PLUS:
+                c = a + b;
+                break;
+            case MINUS:
+                c = a - b;
+                break;
+            case MULTIPLY:
+                c = a * b;
+                break;
+            case DEVISION:
+                c = a / b;
+                break;
+
+            case NO_OPERATION:
+                break;
+        }
+    }
+
+
+
+    private void clear() {
+        a = 0;
+        b = 0;
+        c = 0;
+        operation = NO_OPERATION;
 
     }
 }

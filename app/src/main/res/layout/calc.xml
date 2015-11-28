@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/plus"
-            android:id="@+id/button10"
+            android:id="@+id/plus"
             android:layout_column="0" />
 
         <Button
@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/minus"
-            android:id="@+id/button12"
+            android:id="@+id/minus"
             android:layout_column="2" />
 
     </TableRow>
@@ -117,21 +117,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/multiply"
-            android:id="@+id/button13"
+            android:id="@+id/multiply"
             android:layout_column="0" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/anyway"
-            android:id="@+id/button14"
+            android:text="@string/result"
+            android:id="@+id/result"
             android:layout_column="1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/division"
-            android:id="@+id/button15"
+            android:id="@+id/division"
             android:layout_column="2" />
     </TableRow>
 
@@ -139,19 +139,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:text="@string/reset"
+            android:id="@+id/reset"
             android:layout_column="0"
-            android:inputType="number" />
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText2"
-            android:layout_column="1"
-            android:inputType="number" />
+            android:longClickable="false" />
 
         <TextView
             android:layout_width="wrap_content"
